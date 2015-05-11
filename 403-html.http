@@ -32,5 +32,5 @@ Strict-Transport-Security: max-age=631138519; includeSubdomains; preload
       }
     </style>
   </head>
-  <body><div class="title abs">API Inaccesible</div><div class="image abs"></div><p class="message abs">Unfortunately this API is not accessible from your location.<br>VPN or Tor connections are not permitted.</p></body>
+  <body><div class="title abs">Site Inaccesible</div><div class="image abs"></div><p class="message abs">Unfortunately this site is not accessible from your location.<br>VPN or Tor connections are not permitted.</p></body>
 </html>
