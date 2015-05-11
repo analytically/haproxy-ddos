@@ -1,0 +1,7 @@
+HTTP/1.0 403 Forbidden
+Cache-Control: no-cache
+Connection: close
+Content-Type: application/json
+Strict-Transport-Security: max-age=631138519; includeSubdomains; preload
+
+{"status": 403, "errors": [{"message": "Unfortunately this API is not accessible from your location. VPN or Tor connections are not permitted."}]}

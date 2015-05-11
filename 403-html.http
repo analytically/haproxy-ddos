@@ -1,0 +1,36 @@
+HTTP/1.0 200 OK
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+Strict-Transport-Security: max-age=631138519; includeSubdomains; preload
+
+<html>
+  <head>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0 0;
+        background-color: #f9f9f9;
+        font-weight: 500;
+        color: #666;
+        text-align: center;
+      }
+      .abs {
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        right: 30px;
+      }
+      div.title {
+        font-size: 65px;
+        margin-top: -250px;
+      }
+      p.message {
+        font-size: 25px;
+        margin-top: 200px;
+        line-height: 40px;
+      }
+    </style>
+  </head>
+  <body><div class="title abs">API Inaccesible</div><div class="image abs"></div><p class="message abs">Unfortunately this API is not accessible from your location.<br>VPN or Tor connections are not permitted.</p></body>
+</html>

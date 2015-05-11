@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        {
+            "command": "/etc/haproxy-ddos/update-tor-exit-nodes.sh"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+# Generated 2014-11-04 12:01:54.897693
+196.200.96.0/20
+# ipformat.pm: (c) 2005 Boyan Krosnov
+# ipformat.pm: using template prefix
+# prefix notation
+# ipgetintervals.pm: (c) 2005 Boyan Krosnov
+# prefix data acquired from http://ip.ludost.net/
+# ipgetintervals.pm: datasets list cleared
+# ipgetintervals.pm: added er to the list of datasets
+# ipgetintervals.pm: loading file var/country.db
+# ipgetintervals.pm: dumping database
+5.132.73.0/24
+5.224.73.0/24
+5.225.73.0/24
+37.222.73.0/24
+37.223.64.0/24
+37.223.73.0/24
+46.136.208.0/24

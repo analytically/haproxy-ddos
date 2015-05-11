@@ -1,0 +1,148 @@
+libwww-perl
+^BinGet
+^PycURL
+^Lynx
+^PHP
+^Wget
+^Nutch
+^Java
+^Ruby
+^PEAR
+^SEOstats
+^Python\-urllib
+^python\-requests
+^HTTP_Request
+^HTTP_Request2
+Zend_Http_Client
+Jakarta\ Commons-HttpClient
+The\ Incutio\ XML-RPC\ PHP\ Library
+WordPress
+
+# NING
+NING
+
+# China bots.
+Baiduspider
+Sosospider
+Sogou
+YoudaoBot
+YisouSpider
+
+# Russian bots
+YandexBlogs
+YandexBot
+YandexMedia
+YandexSomething
+Mail\.RU_Bot
+
+# Japan
+DoCoMo
+ichiro
+moget
+
+# Korea
+NaverBot
+
+# non-standard agents that trigger modsecurity.
+meanpathbot
+Babya\ Discoverer
+MRSPUTNIK
+Genieo
+
+# bandwidth suckers
+shr_recommendations_app
+
+# Unsorted bots
+^multi_get
+NLP\ Lightweight
+URLAppendBot
+ZumBot
+Yandex
+MJ12bot
+rojerbot
+Exabot
+dotbot
+gigabot
+AhrefsBot
+accelobot
+searchmetrics
+awcheckBot
+CompSpyBot
+EasouSpider
+purebot
+Ezooms
+SurveyBot
+sitebot
+dotnetdotcom
+dotbot
+SolomonoBot
+ZmEu
+lipperhey
+WBSearchBot
+Snoopy
+AhrefsBot
+DinoPing
+dataprovider\.com
+discoverybot
+www\.integromedb\.org
+360Spider
+80legs
+YamanaLab-Robot
+ip-web-crawler\.com
+Aboundex
+Sleuth
+NCBot
+JikeSpider
+Curious
+visaduhoc\.info
+SemrushBot
+archive\.org_bot
+Dow\ Jones\ Searchbot
+SISTRIX
+brandwatch\.net
+magpie-crawler
+TurnitinBot
+aiHitBot
+PeoplePal
+EzineArticlesLinkScanner
+ProCogSEOBot
+ScreenerBot
+PagesInventory
+SeznamBot
+SEOENGWorldBot
+Netseer
+Riddler
+CLIPish
+proximic
+WebCapture
+Indy\ Library
+Add\ Catalog
+Butterfly
+MSIE\ or\ Firefox\ mutant
+SocialSearcher
+xpymep\.exe
+linkdex\.com
+lindex\.com
+YodaoBot
+^POGS
+WebInDetail
+WEBSITEtheWEB
+CatchBot
+NextGenSearchBot
+BacklinkCrawler
+^rarely\ used
+^DomainCrawler
+ltbot
+NetcraftSurveyAgent
+COMODO
+Comodo-Certificates-Spider
+OpenWebIndex
+FTRF\:\ Friendly
+^ia_archiver
+Wotbot
+QuerySeekerSpider
+netEstate\ NE\ Crawler
+Synapse
+news\ bot
+dragostea
+tencenttraveler

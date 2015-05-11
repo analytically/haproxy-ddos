@@ -1,0 +1,40 @@
+# Generated 2014-11-04 12:02:00.191156
+152.206.0.0/15
+169.158.0.0/16
+181.225.224.0/19
+190.6.64.0/20
+190.6.80.0/20
+190.15.144.0/20
+190.92.112.0/20
+190.107.0.0/20
+196.1.112.0/24
+196.1.135.0/24
+196.3.152.0/24
+200.0.16.0/24
+200.0.24.0/22
+200.5.12.0/22
+200.13.144.0/21
+200.14.48.0/21
+200.55.128.0/19
+200.55.160.0/20
+200.55.176.0/20
+201.220.192.0/20
+201.220.208.0/20
+# ipformat.pm: (c) 2005 Boyan Krosnov
+# ipformat.pm: using template prefix
+# prefix notation
+# ipgetintervals.pm: (c) 2005 Boyan Krosnov
+# prefix data acquired from http://ip.ludost.net/
+# ipgetintervals.pm: datasets list cleared
+# ipgetintervals.pm: added cu to the list of datasets
+# ipgetintervals.pm: loading file var/country.db
+# ipgetintervals.pm: dumping database
+5.132.57.0/24
+5.224.57.0/24
+5.225.57.0/24
+37.222.57.0/24
+37.223.48.0/24
+46.136.193.0/24
+190.6.64.0/19
+200.55.128.0/18
+201.220.192.0/19
