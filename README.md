@@ -58,13 +58,13 @@ Available on 9090, use `admin` as username and `FeYskS2qjP7qvED` as password.
 #### Updating the TOR node list
 
 ```sh
-curl -X POST localhost:666/update-tor-exit-nodes.json
+curl -X POST localhost:666/update-tor-exit-nodes
 ```
 
 #### Restarting HAProxy
 
 ```sh
-curl -X POST localhost:666/restart-haproxy.json
+curl -X POST localhost:666/restart-haproxy
 ```
 
 ### Issues
