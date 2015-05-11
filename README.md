@@ -19,21 +19,21 @@ This will give you an interactive bash prompt into the Docker container.
 
 ### Blocking
 
-Implements two ways of blocking users: a simple deny via HTTP 200 response page and a tarpit. Tarpit stops the request without responding for a delay of
+Uses two ways of blocking users: a simple deny via HTTP 200 response page and a tarpit. Tarpit stops the request without responding for a delay of
 10 seconds. After that delay, if the client is still connected, an HTTP error 500 is returned so that the client does not suspect it has been tarpitted.
-The goal of the tarpit is to slow down robots during an attack when they're limited on the number of concurrent requests. It can be very efficient against
-very dumb robots, and will significantly reduce the load on servers compared to a "deny" rule. Also disconnects slow handshake clients early, to protect from
-resources exhaustion attacks.
 
 Tracks client IPs into a global stick table. Each IP is stored for a limited amount of time, with several counters attached to it. When a new connection
-comes in, the stick table is evaluated to verify that the new connection from this client is allowed to continue. The client IP is provided by CloudFlare
-through the CF-Connecting-IP HTTP header.
+comes in, the stick table is evaluated to verify that the new connection from this client is allowed to continue.
+
+The client IP is provided by CloudFlare through the `CF-Connecting-IP` HTTP header.
 
 #### Deny block
 
-- IP’s from the following countries (via http://ip.ludost.net/): af, ar, ci, cu, ee, eg, er, id, iq, ir, kp, kr, lb, lr, ly, mm, my, ro, rs, sd, so, sy, th, tr, ua, vn, ye, zw
-- IP’s http://www.wizcrafts.net/exploited-servers-iptables-blocklist.html
-- IP’s http://www.wizcrafts.net/nigerian-iptables-blocklist.html
+HTTP `200` for app backend, `403` for API backend.
+
+- IPs from the following countries (via http://ip.ludost.net/): af, ar, ci, cu, ee, eg, er, id, iq, ir, kp, kr, lb, lr, ly, mm, my, ro, rs, sd, so, sy, th, tr, ua, vn, ye, zw
+- IPs http://www.wizcrafts.net/exploited-servers-iptables-blocklist.html
+- IPs http://www.wizcrafts.net/nigerian-iptables-blocklist.html
 - CyberGhost VPN, Hotspot Shield Elite VPN
 - TOR nodes on https://www.dan.me.uk/torlist/
 - DigitalOcean, ServerStack and AWS (VPS providers that can easily be used to setup VPN/TOR nodes)
@@ -51,7 +51,7 @@ through the CF-Connecting-IP HTTP header.
 
 ### HAProxy Stats
 
-Available on 9090, use `admin` as username and `FeYskS2qjP7qvED` as password.
+Available on http://localhost:9090, use `admin` as username and `FeYskS2qjP7qvED` as password.
 
 ### Webhooks (via [CaptainHook](https://github.com/bketelsen/captainhook))
 
