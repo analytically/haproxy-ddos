@@ -51,7 +51,7 @@ HTTP `200` for app backend, `403` for API backend.
 
 ### HAProxy Stats
 
-Available on http://localhost:9090, use `admin` as username and `FeYskS2qjP7qvED` as password.
+Available on [http://localhost:9090](http://localhost:9090), use `admin` as username and `FeYskS2qjP7qvED` as password.
 
 ### Webhooks (via [CaptainHook](https://github.com/bketelsen/captainhook))
 
