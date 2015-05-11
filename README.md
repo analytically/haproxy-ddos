@@ -1,19 +1,27 @@
 # haproxy-ddos
 
-DDOS resilient HAProxy configuration
+DDOS resilient [HAProxy](http://www.haproxy.org/) configuration
 
 ## Building
 
-```shell
+```sh
 docker build -t mycompany/haproxy-ddos
 ```
+
+## Running
+
+```sh
+docker run -t -i mycompany/haproxy-ddos bash
+```
+
+This will give you an interactive bash prompt into the Docker container.
 
 ## Blocking
 
 Implements two ways of blocking users: a simple deny via HTTP 200 response page and a tarpit. Tarpit stops the request without responding for a delay of
 10 seconds. After that delay, if the client is still connected, an HTTP error 500 is returned so that the client does not suspect it has been tarpitted.
 The goal of the tarpit is to slow down robots during an attack when they're limited on the number of concurrent requests. It can be very efficient against
-very dumb robots, and will significantly reduce the load on servers compared to a "deny" rule. We also disconnect slow handshake clients early, to protect from
+very dumb robots, and will significantly reduce the load on servers compared to a "deny" rule. Also disconnects slow handshake clients early, to protect from
 resources exhaustion attacks.
 
 Tracks client IPs into a global stick table. Each IP is stored for a limited amount of time, with several counters attached to it. When a new connection
@@ -26,7 +34,7 @@ through the CF-Connecting-IP HTTP header.
 - IP’s http://www.wizcrafts.net/exploited-servers-iptables-blocklist.html
 - IP’s http://www.wizcrafts.net/nigerian-iptables-blocklist.html
 - CyberGhost VPN, Hotspot Shield Elite VPN
-- TOR nodes on https://www.dan.me.uk/torlist/ - we update this monthly
+- TOR nodes on https://www.dan.me.uk/torlist/
 - DigitalOcean, ServerStack and AWS (VPS providers that can easily be used to setup VPN/TOR nodes)
 
 ### Tarpit block
@@ -52,4 +60,4 @@ Don't run on Docker using OverlayFS.
 
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-Copyright 2014-2015 [Mathias Bogaert](mailto:mathias.bogaert@gmail.com).
+Copyright 2015 [Mathias Bogaert](mailto:mathias.bogaert@gmail.com).
