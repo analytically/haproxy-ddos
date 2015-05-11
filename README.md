@@ -1,6 +1,6 @@
 ## haproxy-ddos
 
-DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind CloudFlare. Use it to build load balancers.
+DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind [CloudFlare](https://www.cloudflare.com/). Use it to build load balancers.
 Follow [@analytically](http://twitter.com/analytically) for updates.
 
 ### Building
