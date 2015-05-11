@@ -10,8 +10,8 @@ RUN locale-gen --no-purge en_US.UTF-8 \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -qy \
     && dpkg-divert --local --rename --add /sbin/initctl \
     && ln -sf /bin/true /sbin/initctl \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qy build-essential libcurl4-gnutls-dev libreadline-dev e2fslibs-dev libssl-dev libsqlite3-dev sqlite3 libyaml-dev libxml2-dev libxslt1-dev python-dev python-support zlib1g-dev \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qy ca-certificates apt-transport-https curl psmisc software-properties-common git golang-go openssl socat sysstat dos2unix \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qy build-essential libcurl4-gnutls-dev libreadline-dev e2fslibs-dev libssl-dev libyaml-dev libxml2-dev libxslt1-dev python-dev python-support zlib1g-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qy ca-certificates transport-https curl psmisc software-properties-common git golang-go openssl sysstat dos2unix \
     && curl -o - https://bootstrap.pypa.io/get-pip.py | python2.7 \
     && pip install envtpl \
     && pip install supervisor \
