@@ -210,7 +210,6 @@ frontend web
     {{ ddos_protection() }}
 
     acl IS_API hdr_beg(host) -i api.
-    acl IS_API_SANDBOX hdr_beg(host) -i sandbox.
 
     {{ whitelist() }}
     {{ country_block() }}
@@ -226,7 +225,6 @@ frontend web
     {{ blacklist_tor() }}
 
     use_backend api if IS_API
-    use_backend api if IS_API_SANDBOX
 
     default_backend app
 

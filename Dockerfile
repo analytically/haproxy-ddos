@@ -56,7 +56,7 @@ ADD 403-json.http /etc/haproxy-ddos/errors/
 
 ADD update-tor-exit-nodes.sh /etc/haproxy-ddos/
 
-    ADD blacklists /etc/haproxy-ddos/blacklists/
+ADD blacklists /etc/haproxy-ddos/blacklists/
 ADD whitelist.txt /etc/haproxy-ddos/
 
 ADD supervisord.haproxy-ddos.conf /etc/supervisor/conf.d/
