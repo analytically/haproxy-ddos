@@ -102,7 +102,7 @@
     acl FORBIDDEN_URI url_reg -i .*(\.|%2e)(\.|%2e)(%2f|%5c|/|\\\\)
     acl FORBIDDEN_URI url_sub -i %00 <script xmlrpc.php
     acl FORBIDDEN_URI path_beg /_search /_nodes
-    acl FORBIDDEN_URI path_end -i .ida .asp .dll .exe .php .sh .pl .py .so
+    acl FORBIDDEN_URI path_end -i .ida .asp .dll .exe .sh .pl .py .so
     acl FORBIDDEN_URI path_dir -i chat phpbb sumthin horde _vti_bin MSOffice
     http-request tarpit if FORBIDDEN_URI
 
@@ -132,7 +132,8 @@ global
     # lower the record size to improve Time to First Byte (TTFB)
     tune.ssl.maxrecord      1419
 
-    ssl-default-bind-ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA
+    # see https://wiki.mozilla.org/Security/Server_Side_TLS - Modern is used here
+    ssl-default-bind-ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK
 
     # turn on stats unix socket
     stats socket /var/run/haproxy-ddos mode 600 level operator
@@ -183,7 +184,7 @@ frontend stats
     stats admin             if AUTH_ADMIN
 
 frontend web
-    bind 0.0.0.0:443 tfo ssl crt /etc/ssl/private/ no-sslv3 npn http/1.1
+    bind 0.0.0.0:443 tfo ssl crt /etc/ssl/private/ no-sslv3 no-tlsv10 npn http/1.1
     option httplog
 
     # DO NOT CHANGE THESE UNLESS CHANGING LOGSTASH CONFIG
@@ -223,6 +224,8 @@ frontend web
 
     {{ blacklist_scammers() }}
     {{ blacklist_tor() }}
+
+    rspadd Strict-Transport-Security:\ max-age=631138519;\ includeSubdomains;\ preload
 
     use_backend api if IS_API
 

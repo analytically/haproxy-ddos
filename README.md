@@ -1,7 +1,9 @@
 ## haproxy-ddos
 
-DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind [CloudFlare](https://www.cloudflare.com/). Use it to build load balancers.
-Follow [@analytically](http://twitter.com/analytically) for updates.
+DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind [CloudFlare](https://www.cloudflare.com/).
+Use it to build [Docker](http://www.docker.com) load balancers. Follow [@analytically](http://twitter.com/analytically) for updates.
+
+Part inspired from https://jve.linuxwall.info/ressources/taf/haproxy-aws/.
 
 ### Building
 
@@ -11,11 +13,14 @@ docker build -t mycompany/haproxy-ddos
 
 ### Running
 
+Mozilla's recommended configuration ['Modern'](https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility) is used. Mount the
+directory containing your SSL certificates (pem) as `/etc/ssl/private/`:
+
 ```sh
-docker run --cap-add=NET_ADMIN --restart=always -t -i mycompany/haproxy-ddos bash
+docker run --cap-add=NET_ADMIN --restart=always -v /opt/mycompany/ssl:/etc/ssl/private \ -t -i mycompany/haproxy-ddos bash
 ```
 
-This will give you an interactive bash prompt into the Docker container.
+This will give you an interactive bash prompt into the Docker container. To customize the backends, edit `haproxy.cfg.tpl`.
 
 ### Blocking
 

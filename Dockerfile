@@ -1,27 +1,22 @@
-FROM ubuntu:14.04.2
+FROM debian:jessie
 
 ENV GOPATH /usr/share/gocode
 ENV PATH $GOPATH/bin:$PATH
 
 ADD captainhook.sh /etc/captainhook/
 
-RUN locale-gen --no-purge en_US.UTF-8 \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -qy \
-    && dpkg-divert --local --rename --add /sbin/initctl \
-    && ln -sf /bin/true /sbin/initctl \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qy build-essential libcurl4-gnutls-dev libreadline-dev e2fslibs-dev libssl-dev libyaml-dev libxml2-dev libxslt1-dev python-dev python-support zlib1g-dev \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qy ca-certificates transport-https curl psmisc software-properties-common git golang-go openssl sysstat dos2unix \
-    && curl -o - https://bootstrap.pypa.io/get-pip.py | python2.7 \
+RUN apt-get update && apt-get install -y curl libxml2-dev python git build-essential make gcc python-dev locales python-pip golang-go libssl-dev zlib1g-dev iptables dos2unix \
     && pip install envtpl \
     && pip install supervisor \
     && go get github.com/bketelsen/captainhook \
     && chmod u+x /etc/captainhook/captainhook.sh
 
 # Set locale
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+RUN dpkg-reconfigure locales && \
+    locale-gen C.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8
+
+ENV LC_ALL C.UTF-8
 
 # Disable python output buffering
 ENV PYTHONUNBUFFERED 1
@@ -37,8 +32,7 @@ RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.ta
     && cd .. \
     && rm -Rf pcre-8.37
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy --no-install-recommends iptables \
-    && curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.12.tar.gz | tar xz \
+RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.12.tar.gz | tar xz \
     && cd haproxy-1.5.12 \
     && make clean \
     && make TARGET=linux2628 ARCH=x86_64 USE_ZLIB=1 USE_REGPARM=1 USE_STATIC_PCRE=1 USE_PCRE_JIT=1 USE_TFO=1 USE_OPENSSL=1 DEFINE="-fstack-protector -Wformat -Wformat-security -Werror=format-security -D_FORTIFY_SOURCE=2" \
