@@ -1,7 +1,7 @@
 ## haproxy-ddos
 
 DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind [CloudFlare](https://www.cloudflare.com/).
-Use it to build [Docker](http://www.docker.com) load balancers. Follow [@analytically](http://twitter.com/analytically) for updates.
+Use it to build [Docker](http://www.docker.com) container-based load balancers. Follow [@analytically](http://twitter.com/analytically) for updates.
 
 Part inspired from https://jve.linuxwall.info/ressources/taf/haproxy-aws/.
 
