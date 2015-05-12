@@ -3,12 +3,12 @@
 DDOS and attack resilient [HAProxy](http://www.haproxy.org/) configuration. To be used behind [CloudFlare](https://www.cloudflare.com/).
 Use it to build [Docker](http://www.docker.com) container-based load balancers. Follow [@analytically](http://twitter.com/analytically) for updates.
 
-Part inspired from https://jve.linuxwall.info/ressources/taf/haproxy-aws/.
+Part inspired by [HAProxy termination in AWS](https://jve.linuxwall.info/ressources/taf/haproxy-aws/).
 
 ### Building
 
 ```sh
-docker build -t mycompany/haproxy-ddos
+docker build -t mycompany/haproxy-ddos .
 ```
 
 ### Running
@@ -36,7 +36,7 @@ The client IP is provided by CloudFlare through the `CF-Connecting-IP` HTTP head
 
 HTTP `200` for app backend, `403` for API backend.
 
-- IPs from the following countries (via http://ip.ludost.net/): af, ar, ci, cu, ee, eg, er, id, iq, ir, kp, kr, lb, lr, ly, mm, my, ro, rs, sd, so, sy, th, tr, ua, vn, ye, zw
+- IPs from the following countries (via http://ip.ludost.net/): af, ci, cu, ee, eg, er, id, iq, ir, kp, kr, lb, lr, ly, mm, my, ro, rs, sd, so, sy, th, tr, ua, vn, ye, zw
 - IPs http://www.wizcrafts.net/exploited-servers-iptables-blocklist.html
 - IPs http://www.wizcrafts.net/nigerian-iptables-blocklist.html
 - CyberGhost VPN, Hotspot Shield Elite VPN
@@ -51,7 +51,7 @@ HTTP `200` for app backend, `403` for API backend.
 - TARPIT the connection if the client has passed the HTTP request rate (10s)
 - TARPIT content-length larger than 20kB (eg. POST requests)
 - TARPIT requests with more than 10 Range headers (see http://httpd.apache.org/security/CVE-2011-3192.txt)
-- TARPIT requests for .ida .asp .dll .exe .php .sh .pl .py .so chat phpbb sumthin horde _vti_bin MSOffice %00 <script xmlrpc.php
+- TARPIT requests for .ida .asp .dll .exe .sh .pl .py .so chat phpbb sumthin horde _vti_bin MSOffice %00 <script xmlrpc.php
 - TARPIT requests with illegal headers
 
 ### HAProxy Stats
