@@ -5,7 +5,7 @@ ENV PATH $GOPATH/bin:$PATH
 
 ADD captainhook.sh /etc/captainhook/
 
-RUN apt-get update && apt-get install -y curl libxml2-dev python git build-essential make gcc python-dev locales python-pip golang-go libssl-dev zlib1g-dev iptables dos2unix \
+RUN apt-get update && apt-get install -y curl libxml2-dev python git nano build-essential make gcc python-dev locales python-pip golang-go libssl-dev zlib1g-dev iptables dos2unix \
     && pip install envtpl \
     && pip install supervisor \
     && go get github.com/bketelsen/captainhook \
