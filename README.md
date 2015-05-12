@@ -20,7 +20,7 @@ directory containing your SSL certificates (pem) as `/etc/ssl/private/`:
 docker run --cap-add=NET_ADMIN --restart=always -v /opt/mycompany/ssl:/etc/ssl/private \ -t -i mycompany/haproxy-ddos bash
 ```
 
-This will give you an interactive bash prompt into the Docker container. To customize the backends, edit `haproxy.cfg.tpl`.
+This will give you a bash prompt into the Docker container. To customize the backends, edit [`haproxy.cfg.tpl`](https://github.com/analytically/haproxy-ddos/blob/master/haproxy.cfg.tpl).
 
 ### Blocking
 
