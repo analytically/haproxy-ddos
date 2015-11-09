@@ -1,15 +1,18 @@
-FROM debian:jessie
+FROM gliderlabs/alpine:3.2
 
 ENV GOPATH /usr/share/gocode
 ENV PATH $GOPATH/bin:$PATH
 
 ADD captainhook.sh /etc/captainhook/
 
-RUN apt-get update && apt-get install -y curl libxml2-dev python git nano build-essential make gcc python-dev locales python-pip golang-go libssl-dev zlib1g-dev iptables dos2unix \
-    && pip install envtpl \
-    && pip install supervisor \
-    && go get github.com/bketelsen/captainhook \
-    && chmod u+x /etc/captainhook/captainhook.sh
+RUN apk add --update python && \
+    apk add wget curl ca-certificates make g++ libgcc linux-headers openssl-dev git go supervisor bash && \
+    wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python && \
+    pip install envtpl && \
+    pip install supervisor && \
+    go get github.com/bketelsen/captainhook && \
+    chmod u+x /etc/captainhook/captainhook.sh && \
+    rm /var/cache/apk/*
 
 # Set locale
 ENV LANG C.UTF-8
@@ -18,7 +21,6 @@ ENV LC_ALL C.UTF-8
 # Disable python output buffering
 ENV PYTHONUNBUFFERED 1
 
-ADD .bashrc /root/
 ADD supervisord.conf /etc/
 
 RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz | tar xz \
@@ -29,13 +31,12 @@ RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.ta
     && cd .. \
     && rm -Rf pcre-8.37
 
-RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.14.tar.gz | tar xz \
-    && cd haproxy-1.5.14 \
-    && make clean \
+RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.15.tar.gz | tar xz \
+    && cd haproxy-1.5.15 \
     && make TARGET=linux2628 ARCH=x86_64 USE_ZLIB=1 USE_REGPARM=1 USE_STATIC_PCRE=1 USE_PCRE_JIT=1 USE_TFO=1 USE_OPENSSL=1 DEFINE="-fstack-protector -Wformat -Wformat-security -Werror=format-security -D_FORTIFY_SOURCE=2" \
     && make install \
     && cd .. \
-    && rm -Rf haproxy-1.5.14
+    && rm -Rf haproxy-1.5.15
 
 ADD captainhook /etc/captainhook/
 ADD haproxy.sh /etc/haproxy-ddos/

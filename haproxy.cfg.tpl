@@ -181,7 +181,7 @@ frontend stats
 
 frontend web
     bind 0.0.0.0:443 tfo ssl crt /etc/ssl/private/ no-sslv3 no-tlsv10 npn http/1.1
-    option httplog
+    # option httplog
 
     # DO NOT CHANGE THESE UNLESS CHANGING LOGSTASH CONFIG
     capture request header Host len 64
