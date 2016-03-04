@@ -23,13 +23,13 @@ ENV PYTHONUNBUFFERED 1
 
 ADD supervisord.conf /etc/
 
-RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz | tar xz \
-    && cd pcre-8.37 \
-    && CFLAGS="-O2 -march=x86-64" ./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.37 --enable-utf8 --enable-unicode-properties --enable-jit --disable-shared \
+RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.gz | tar xz \
+    && cd pcre-8.38 \
+    && CFLAGS="-O2 -march=x86-64" ./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.38 --enable-utf8 --enable-unicode-properties --enable-jit --disable-shared \
     && make \
     && make install \
     && cd .. \
-    && rm -Rf pcre-8.37
+    && rm -Rf pcre-8.38
 
 RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.15.tar.gz | tar xz \
     && cd haproxy-1.5.15 \
