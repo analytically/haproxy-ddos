@@ -23,20 +23,20 @@ ENV PYTHONUNBUFFERED 1
 
 ADD supervisord.conf /etc/
 
-RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.gz | tar xz \
-    && cd pcre-8.38 \
-    && CFLAGS="-O2 -march=x86-64" ./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.38 --enable-utf8 --enable-unicode-properties --enable-jit --disable-shared \
+RUN curl -sSf ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz | tar xz \
+    && cd pcre-8.39 \
+    && CFLAGS="-O2 -march=x86-64" ./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.39 --enable-utf8 --enable-unicode-properties --enable-jit --disable-shared \
     && make \
     && make install \
     && cd .. \
-    && rm -Rf pcre-8.38
+    && rm -Rf pcre-8.39
 
-RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.15.tar.gz | tar xz \
-    && cd haproxy-1.5.15 \
+RUN curl -sSf --retry 3 -L http://www.haproxy.org/download/1.5/src/haproxy-1.5.17.tar.gz | tar xz \
+    && cd haproxy-1.5.17 \
     && make TARGET=linux2628 ARCH=x86_64 USE_ZLIB=1 USE_REGPARM=1 USE_STATIC_PCRE=1 USE_PCRE_JIT=1 USE_TFO=1 USE_OPENSSL=1 DEFINE="-fstack-protector -Wformat -Wformat-security -Werror=format-security -D_FORTIFY_SOURCE=2" \
     && make install \
     && cd .. \
-    && rm -Rf haproxy-1.5.15
+    && rm -Rf haproxy-1.5.17
 
 ADD captainhook /etc/captainhook/
 ADD haproxy.sh /etc/haproxy-ddos/
